@@ -18,6 +18,13 @@ class CustomerController {
    * @param {View} ctx.view
    */
   async index({ request, response, view }) {
+  const customer=await Customer.query().with('projects').fetch();
+
+
+  response.status(200).json({
+    data:customer
+  })
+
   }
 
   /**
